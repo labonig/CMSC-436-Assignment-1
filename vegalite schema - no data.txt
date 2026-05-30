@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "A Unit Chart with Small Multiples",
+  "padding": {"top": 20, "bottom": 20, "left": 30, "right": 30},
+  "title":{
+    "text":["Some EU States are Recovering Almost All", "Plastic Packaging: Converting it to new industrial products*"],
+    "align":"left",
+    "anchor":"start",
+    "baseline":"line-top",
+    "fontSize":55,
+    "color":"white",
+	  "font":"nunito light"
+  },
+  "background":"#001E4F",
+  "config": {
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    }
+  },
+  "facet": {
+    "row": {
+      "field": "r",
+      "title":null,
+      "header": { "labels":null }
+    },
+    "column":{
+      "field":"c",
+      "title":null,
+      "header": { "labels":null }
+    }
+  },
+  "spec":{
+    "mark": {"type":"rect", "cornerRadius":5, "width":15, "height":15},
+    "transform": [
+      {"calculate": "ceil(datum.id/10)", "as": "Y"},
+      {"calculate": "-1 * (datum.id - (datum.Y - 1) * 10)", "as": "X"}
+    ],
+    "encoding": {
+      "x": {
+        "field": "X",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y":{
+        "field": "Y",
+        "type": "ordinal",
+        "axis": null
+      },
+      "color":{
+        "field": "color",
+        "type": "nominal",
+        "legend":null,
+        "scale": {
+          "domain":["g", "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "o1", "o2", "o3", "o4", "o5", "o6", "o7", "o8", "o9", "o10", "w"],
+          "range": ["#597DA7", "#F4FFF9", "#E4F9F4", "#C5EFF9", "#A5E6FE", "#83DDFC", "#64CEF5", "#55BDE7", "#50A9DA", "#4198C9", "#FAE152", "#FED651", "#FFCE55", "#FFC954", "#FFC14B", "#FFB457", "#FFB548", "#FBB14B", "#FBB04D", "#FFA754", "#FFFFFF"]
+        }
+      },
+      "column": {
+        "field": "country",
+        "type": "nominal",
+        "title":null, 
+        "header": {
+			    "labelFontSize": 30, 
+			    "labelColor":"white",
+          "labelFont":"nunito light",
+			    "orient":"bottom"}
+        }
+      },
+      "config": {
+        "style": {
+          "label": {
+            "align": "center",
+            "baseline": "bottom"
+        }
+      }
+    }
+  },
+  [Paste Data Here]
+}
